@@ -6,15 +6,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import org.mozilla.javascript.Context;
+import org.mozilla.javascript.Scriptable;
+
 public class MainActivity extends AppCompatActivity {
-
     Button btn00,btn0,btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,btn9,btnSum,btnSub,btnMulti,btnDiv,btnEqual,btnPer,btnPoint,btnClear,btnAc;
-
-    TextView txt1;
-
-    float n1,n2;
-
-    boolean sum,sub,multi,div,per;
+    TextView txt1,txt2;
+    String data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)  {
@@ -22,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         txt1=findViewById(R.id.txt1);
+        txt2=findViewById(R.id.txt2);
 
         btn00=findViewById(R.id.btn00);
         btn0=findViewById(R.id.btn0);
@@ -48,186 +47,148 @@ public class MainActivity extends AppCompatActivity {
         btn00.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                txt1.setText(txt1.getText()+"00");
+                data=txt1.getText().toString();
+                txt1.setText(data+"00");
             }
         });
         btn0.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                txt1.setText(txt1.getText()+"0");
+                data=txt1.getText().toString();
+                txt1.setText(data+"0");
             }
         });
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                txt1.setText(txt1.getText()+"1");
+                data=txt1.getText().toString();
+                txt1.setText(data+"1");
             }
         });
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                txt1.setText(txt1.getText()+"2");
+                data=txt1.getText().toString();
+                txt1.setText(data+"2");
             }
         });
         btn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                txt1.setText(txt1.getText()+"3");
+                data=txt1.getText().toString();
+                txt1.setText(data+"3");
             }
         });
         btn4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                txt1.setText(txt1.getText()+"4");
+                data=txt1.getText().toString();
+                txt1.setText(data+"4");
             }
         });
         btn5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                txt1.setText(txt1.getText()+"5");
+                data=txt1.getText().toString();
+                txt1.setText(data+"5");
             }
         });
         btn6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                txt1.setText(txt1.getText()+"6");
+                data=txt1.getText().toString();
+                txt1.setText(data+"6");
             }
         });
         btn7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                txt1.setText(txt1.getText()+"7");
+                data=txt1.getText().toString();
+                txt1.setText(data+"7");
             }
         });
         btn8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                txt1.setText(txt1.getText()+"8");
+                data=txt1.getText().toString();
+                txt1.setText(data+"8");
             }
         });
         btn9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                txt1.setText(txt1.getText()+"9");
+                data=txt1.getText().toString();
+                txt1.setText(data+"9");
             }
         });
         btnPoint.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                txt1.setText(txt1.getText()+".");
+                data=txt1.getText().toString();
+                txt1.setText(data+".");
             }
         });
         btnSum.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(txt1==null)
-                {
-                    txt1.setText("");
-                }
-                else
-                {
-                    n1=Float.parseFloat(txt1.getText()+"");
-                    sum=true;
-                    txt1.setText(null);
-                }
+                data = txt1.getText().toString();
+                txt1.setText(data + "+");
             }
         });
         btnSub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(txt1==null)
-                {
-                    txt1.setText("");
-                }
-                else
-                {
-                    n1=Float.parseFloat(txt1.getText()+"");
-                    sub=true;
-                    txt1.setText(null);
-                }
+                data = txt1.getText().toString();
+                txt1.setText(data + "-");
             }
         });
         btnMulti.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(txt1==null)
-                {
-                    txt1.setText("");
-                }
-                else
-                {
-                    n1=Float.parseFloat(txt1.getText()+"");
-                    multi=true;
-                    txt1.setText(null);
-                }
+                data = txt1.getText().toString();
+                txt1.setText(data + "*");
             }
         });
         btnDiv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(txt1==null)
-                {
-                    txt1.setText("");
-                }
-                else
-                {
-                    n1=Float.parseFloat(txt1.getText()+"");
-                    div=true;
-                    txt1.setText(null);
-                }
+                data = txt1.getText().toString();
+                txt1.setText(data + "/");
             }
         });
         btnPer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(txt1==null)
-                {
-                    txt1.setText("");
-                }
-                else
-                {
-                    n1=Float.parseFloat(txt1.getText()+"");
-                    per=true;
-                    txt1.setText(null);
-                }
+                data = txt1.getText().toString();
+                txt1.setText(data + "%");
             }
         });
         btnEqual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                n2=Float.parseFloat(txt1.getText()+"");
-                if(sum==true)
-                {
-                    txt1.setText(n1+n2+"");
-                    sum=false;
-                }
-                if(sub==true)
-                {
-                    txt1.setText(n1-n2+"");
-                    sub=false;
-                }
-                if(multi==true)
-                {
-                    txt1.setText(n1*n2+"");
-                    multi=false;
-                }
-                if(div==true)
-                {
-                    txt1.setText(n1/n2+"");
-                    div=false;
-                }
-                if(per==true)
-                {
-                    txt1.setText(n1%n2+"");
-                    per=false;
-                }
 
+                data = txt1.getText().toString();
+
+                data=data.replaceAll("×","*");
+                data=data.replaceAll("%","/100");
+                data=data.replaceAll("÷","/");
+
+                Context rhino = Context.enter();
+                rhino.setOptimizationLevel(-1);
+
+                String finalResult="";
+
+                Scriptable scriptable=rhino.initStandardObjects();
+                finalResult=rhino.evaluateString(scriptable,data,"Javsscript",1,null).toString();
+
+                txt2.setText(finalResult);
             }
         });
         btnClear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 txt1.setText("");
+                txt2.setText("");
             }
         });
         btnAc.setOnClickListener(new View.OnClickListener() {
